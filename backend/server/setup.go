@@ -3,11 +3,13 @@ package server
 import (
 	"net/http"
 
+	"github.com/Rhtymn/eduall-case-study/backend/handler"
 	"github.com/gin-gonic/gin"
 )
 
 type ServerOpts struct {
-	ErrorHandler gin.HandlerFunc
+	ProductHandler *handler.ProductHandler
+	ErrorHandler   gin.HandlerFunc
 }
 
 func Setup(opts ServerOpts) *gin.Engine {
@@ -23,6 +25,9 @@ func Setup(opts ServerOpts) *gin.Engine {
 	apiV1Group.GET("/ping", func(ctx *gin.Context) {
 		ctx.String(http.StatusOK, "pong")
 	})
+
+	productsGroup := apiV1Group.Group("/products")
+	productsGroup.GET(".", opts.ProductHandler.GetAll)
 
 	return router
 }
