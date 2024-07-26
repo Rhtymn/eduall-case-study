@@ -21,7 +21,7 @@ func NewProductRepository(db *sql.DB) *productRepository {
 func (r *productRepository) BatchSave(products []entity.Product) error {
 	var sb strings.Builder
 	sb.WriteString(`INSERT INTO 
-		products(brand, model, screen_size, color, harddisk, cpu, ram, os, special_features, graphics, graphic_coprocessor, cpu_speed, rating, price)
+		products(brand, model, screen_size, color, harddisk, cpu, ram, os, special_features, graphics, graphics_coprocessor, cpu_speed, rating, price)
 	VALUES `)
 
 	args := make([]interface{}, 14*len(products))

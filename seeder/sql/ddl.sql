@@ -14,7 +14,7 @@ CREATE TABLE products(
     os VARCHAR,
     special_features VARCHAR,
     graphics VARCHAR,
-    graphic_coprocessor VARCHAR,
+    graphics_coprocessor VARCHAR,
     cpu_speed VARCHAR,
     rating NUMERIC(2, 1),
     price NUMERIC(10, 2)
