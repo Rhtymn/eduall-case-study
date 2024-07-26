@@ -21,6 +21,14 @@ func NewAppError(code int, message string, err error) *AppError {
 	}
 }
 
+func (e *AppError) Message() string {
+	return e.message
+}
+
+func (e *AppError) Code() int {
+	return e.code
+}
+
 func (e *AppError) Error() string {
 	if e.err != nil {
 		return fmt.Sprintf("(%d) %s: %s", e.code, e.message, e.err)
@@ -46,4 +54,8 @@ func Wrap(err error) error {
 
 func NewInternal(err error) error {
 	return NewAppError(CodeInternal, "internal error", err)
+}
+
+func NewInvalidValidation(err error) error {
+	return NewAppError(CodeInvalidValidation, "invalid validation", err)
 }
