@@ -10,6 +10,7 @@ import (
 type ServerOpts struct {
 	ProductHandler *handler.ProductHandler
 	ErrorHandler   gin.HandlerFunc
+	CorsHandler    gin.HandlerFunc
 }
 
 func Setup(opts ServerOpts) *gin.Engine {
@@ -19,6 +20,7 @@ func Setup(opts ServerOpts) *gin.Engine {
 	router.Use(
 		gin.Recovery(),
 		opts.ErrorHandler,
+		opts.CorsHandler,
 	)
 
 	apiV1Group := router.Group("/api/v1")

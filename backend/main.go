@@ -34,6 +34,7 @@ func main() {
 	}
 
 	errorHandler := middleware.NewErrorHandler()
+	corsHandler := middleware.NewCorsHandler(conf.CorsDomain)
 
 	productRepository := postgre.NewProductRepository(db)
 
@@ -49,6 +50,7 @@ func main() {
 	router := server.Setup(server.ServerOpts{
 		ProductHandler: productHandler,
 		ErrorHandler:   errorHandler,
+		CorsHandler:    corsHandler,
 	})
 
 	server := &http.Server{
