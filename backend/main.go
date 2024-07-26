@@ -7,6 +7,7 @@ import (
 
 	"github.com/Rhtymn/eduall-case-study/backend/config"
 	"github.com/Rhtymn/eduall-case-study/backend/database"
+	"github.com/Rhtymn/eduall-case-study/backend/middleware"
 	"github.com/Rhtymn/eduall-case-study/backend/server"
 )
 
@@ -28,10 +29,13 @@ func main() {
 		fmt.Printf("Error connecting to DB : %s", err.Error())
 		os.Exit(1)
 	}
-
 	fmt.Println(db)
 
-	router := server.Setup(server.ServerOpts{})
+	errorHandler := middleware.NewErrorHandler()
+
+	router := server.Setup(server.ServerOpts{
+		ErrorHandler: errorHandler,
+	})
 
 	server := &http.Server{
 		Addr:    conf.ServerAddr,
