@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/Rhtymn/eduall-case-study/backend/config"
 	"github.com/Rhtymn/eduall-case-study/backend/database"
+	"github.com/Rhtymn/eduall-case-study/backend/server"
 )
 
 func main() {
@@ -28,4 +30,17 @@ func main() {
 	}
 
 	fmt.Println(db)
+
+	router := server.Setup(server.ServerOpts{})
+
+	server := &http.Server{
+		Addr:    conf.ServerAddr,
+		Handler: router,
+	}
+
+	fmt.Printf("Starting Server...\n")
+	fmt.Printf("Server running on port %s\n", conf.ServerAddr)
+	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		fmt.Printf("Error running server: %v\n", err)
+	}
 }
