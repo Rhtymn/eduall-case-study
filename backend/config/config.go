@@ -12,6 +12,7 @@ var errMissingKey = fmt.Errorf("missing key")
 type Config struct {
 	ServerAddr string
 	PostgreURL string
+	CorsDomain string
 }
 
 func Init() error {
@@ -36,6 +37,12 @@ func Load() (Config, error) {
 		return c, errMissingKey
 	}
 	c.PostgreURL = postgreUrl
+
+	corsDomain := os.Getenv("CORS_DOMAIN")
+	if postgreUrl == "" {
+		return c, errMissingKey
+	}
+	c.CorsDomain = corsDomain
 
 	return c, nil
 }
