@@ -13,21 +13,21 @@ type ProductQuery struct {
 }
 
 type ProductResponse struct {
-	ID                 int64   `json:"id"`
-	Brand              string  `json:"brand"`
-	Model              string  `json:"model"`
-	ScreenSize         string  `json:"screen_size"`
-	Color              string  `json:"color"`
-	HardDisk           string  `json:"harddisk"`
-	CPU                string  `json:"cpu"`
-	RAM                string  `json:"ram"`
-	OS                 string  `json:"os"`
-	SpecialFeatures    string  `json:"special_features"`
-	Graphics           string  `json:"graphics"`
-	GraphicCoprocessor string  `json:"graphic_coprocessor"`
-	CpuSpeed           string  `json:"cpu_speed"`
-	Rating             float64 `json:"rating"`
-	Price              string  `json:"price"`
+	ID                  int64   `json:"id"`
+	Brand               string  `json:"brand"`
+	Model               string  `json:"model"`
+	ScreenSize          string  `json:"screen_size"`
+	Color               string  `json:"color"`
+	HardDisk            string  `json:"harddisk"`
+	CPU                 string  `json:"cpu"`
+	RAM                 string  `json:"ram"`
+	OS                  string  `json:"os"`
+	SpecialFeatures     string  `json:"special_features"`
+	Graphics            string  `json:"graphics"`
+	GraphicsCoprocessor string  `json:"graphics_coprocessor"`
+	CpuSpeed            string  `json:"cpu_speed"`
+	Rating              float64 `json:"rating"`
+	Price               string  `json:"price"`
 }
 
 type ProductResponseWithMeta struct {
@@ -37,21 +37,21 @@ type ProductResponseWithMeta struct {
 
 func NewProductResponse(p domain.Product) ProductResponse {
 	return ProductResponse{
-		ID:                 p.ID,
-		Brand:              p.Brand,
-		Model:              p.Model,
-		ScreenSize:         p.ScreenSize,
-		Color:              p.Color,
-		HardDisk:           p.HardDisk,
-		CPU:                p.CPU,
-		RAM:                p.RAM,
-		OS:                 p.OS,
-		SpecialFeatures:    p.SpecialFeatures,
-		Graphics:           p.Graphics,
-		GraphicCoprocessor: p.GraphicCoprocessor,
-		CpuSpeed:           p.CpuSpeed,
-		Rating:             p.Rating,
-		Price:              fmt.Sprintf("$%.2f", p.Price),
+		ID:                  p.ID,
+		Brand:               p.Brand,
+		Model:               p.Model,
+		ScreenSize:          p.ScreenSize,
+		Color:               p.Color,
+		HardDisk:            p.HardDisk,
+		CPU:                 p.CPU,
+		RAM:                 p.RAM,
+		OS:                  p.OS,
+		SpecialFeatures:     p.SpecialFeatures,
+		Graphics:            p.Graphics,
+		GraphicsCoprocessor: p.GraphicsCoprocessor,
+		CpuSpeed:            p.CpuSpeed,
+		Rating:              p.Rating,
+		Price:               fmt.Sprintf("$%.2f", p.Price),
 	}
 }
 

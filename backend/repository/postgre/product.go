@@ -58,7 +58,7 @@ func (r *productRepository) GetAll(ctx context.Context, q domain.ProductQuery) (
 			&np.OS,
 			&np.SpecialFeatures,
 			&np.Graphics,
-			&np.GraphicCoprocessor,
+			&np.GraphicsCoprocessor,
 			&np.CpuSpeed,
 			&np.Rating,
 			&np.Price,

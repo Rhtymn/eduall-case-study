@@ -6,37 +6,37 @@ import (
 )
 
 type Product struct {
-	ID                 int64
-	Brand              string
-	Model              string
-	ScreenSize         string
-	Color              string
-	HardDisk           string
-	CPU                string
-	RAM                string
-	OS                 string
-	SpecialFeatures    string
-	Graphics           string
-	GraphicCoprocessor string
-	CpuSpeed           string
-	Rating             float64
-	Price              float64
+	ID                  int64
+	Brand               string
+	Model               string
+	ScreenSize          string
+	Color               string
+	HardDisk            string
+	CPU                 string
+	RAM                 string
+	OS                  string
+	SpecialFeatures     string
+	Graphics            string
+	GraphicsCoprocessor string
+	CpuSpeed            string
+	Rating              float64
+	Price               float64
 }
 
 type NullableProduct struct {
-	Model              sql.NullString
-	ScreenSize         sql.NullString
-	Color              sql.NullString
-	HardDisk           sql.NullString
-	CPU                sql.NullString
-	RAM                sql.NullString
-	OS                 sql.NullString
-	SpecialFeatures    sql.NullString
-	Graphics           sql.NullString
-	GraphicCoprocessor sql.NullString
-	CpuSpeed           sql.NullString
-	Rating             sql.NullFloat64
-	Price              sql.NullFloat64
+	Model               sql.NullString
+	ScreenSize          sql.NullString
+	Color               sql.NullString
+	HardDisk            sql.NullString
+	CPU                 sql.NullString
+	RAM                 sql.NullString
+	OS                  sql.NullString
+	SpecialFeatures     sql.NullString
+	Graphics            sql.NullString
+	GraphicsCoprocessor sql.NullString
+	CpuSpeed            sql.NullString
+	Rating              sql.NullFloat64
+	Price               sql.NullFloat64
 }
 
 func MergeProduct(p Product, np NullableProduct) Product {
@@ -74,6 +74,10 @@ func MergeProduct(p Product, np NullableProduct) Product {
 
 	if np.Graphics.Valid {
 		p.Graphics = np.Graphics.String
+	}
+
+	if np.GraphicsCoprocessor.Valid {
+		p.GraphicsCoprocessor = np.GraphicsCoprocessor.String
 	}
 
 	if np.CpuSpeed.Valid {
