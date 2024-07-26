@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/Rhtymn/eduall-case-study/backend/config"
+	"github.com/Rhtymn/eduall-case-study/backend/database"
 )
 
 func main() {
@@ -20,5 +21,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println(conf)
+	db, err := database.ConnectPostgreDB(conf.PostgreURL)
+	if err != nil {
+		fmt.Printf("Error connecting to DB : %s", err.Error())
+		os.Exit(1)
+	}
+
+	fmt.Println(db)
 }
